@@ -1047,17 +1047,17 @@ const ProductPage = () => {
 
             {/* Product Details Accordion Section */}
             <div className="space-y-0 pt-4 border-t border-border">
-              {/* Designed for Yoga and Casual */}
+              {/* Designed for Performance & Style */}
               <Collapsible open={designedOpen} onOpenChange={setDesignedOpen}>
                 <CollapsibleTrigger className="w-full flex items-center justify-between py-4 border-b border-border/50">
                   <div className="flex items-center gap-3">
                     <Dumbbell className="w-5 h-5" />
-                    <span className="text-sm font-medium">Designed for Yoga and Casual</span>
+                    <span className="text-sm font-medium">Designed for Performance & Style</span>
                   </div>
                   <ChevronDown className={`w-4 h-4 transition-transform ${designedOpen ? 'rotate-180' : ''}`} />
                 </CollapsibleTrigger>
                 <CollapsibleContent className="py-3 text-sm text-muted-foreground">
-                  Perfect for yoga sessions, casual wear, or everyday activities. The flexible design moves with you for maximum comfort.
+                  Crafted for movement and style — whether you're hitting the studio, the court, or the streets. Every piece is engineered for confidence.
                 </CollapsibleContent>
               </Collapsible>
 
@@ -1075,17 +1075,17 @@ const ProductPage = () => {
                 </CollapsibleContent>
               </Collapsible>
 
-              {/* High Rise, Bikini Fit */}
+              {/* Sculpted Fit, Confident Silhouette */}
               <Collapsible open={fitOpen} onOpenChange={setFitOpen}>
                 <CollapsibleTrigger className="w-full flex items-center justify-between py-4 border-b border-border/50">
                   <div className="flex items-center gap-3">
                     <SlidersHorizontal className="w-5 h-5" />
-                    <span className="text-sm font-medium">High Rise, Bikini Fit</span>
+                    <span className="text-sm font-medium">Sculpted Fit, Confident Silhouette</span>
                   </div>
                   <ChevronDown className={`w-4 h-4 transition-transform ${fitOpen ? 'rotate-180' : ''}`} />
                 </CollapsibleTrigger>
                 <CollapsibleContent className="py-3 text-sm text-muted-foreground">
-                  High-rise waistband provides extra coverage and support, while the bikini fit offers a flattering silhouette.
+                  Designed with precision tailoring that flatters and supports. Every cut is intentional for a silhouette that commands attention.
                 </CollapsibleContent>
               </Collapsible>
 
@@ -1099,10 +1099,10 @@ const ProductPage = () => {
                   <ChevronDown className={`w-4 h-4 transition-transform ${productFeaturesOpen ? 'rotate-180' : ''}`} />
                 </CollapsibleTrigger>
                 <CollapsibleContent className="py-3 text-sm text-muted-foreground space-y-2">
-                  <p>• DuraFit® technology for firm compression</p>
-                  <p>• No leg bands for seamless look</p>
-                  <p>• 100% cotton gusset</p>
-                  <p>• Invisible under clothes</p>
+                  <p>• Premium construction for lasting durability</p>
+                  <p>• Seamless design for a clean, polished look</p>
+                  <p>• Moisture-wicking technology</p>
+                  <p>• Flexible 4-way stretch</p>
                 </CollapsibleContent>
               </Collapsible>
 
@@ -1116,10 +1116,9 @@ const ProductPage = () => {
                   <ChevronDown className={`w-4 h-4 transition-transform ${materialOpen ? 'rotate-180' : ''}`} />
                 </CollapsibleTrigger>
                 <CollapsibleContent className="py-3 text-sm text-muted-foreground space-y-2">
-                  <p><strong>Fabric:</strong> 59% polyamide, 41% elastane</p>
-                  <p><strong>Interior lining:</strong> 57% polyamide, 43% elastane</p>
-                  <p><strong>Care:</strong> Hand wash cold, do not bleach, line dry</p>
-                  <p><strong>Origin:</strong> Made sustainably in Colombia</p>
+                  <p><strong>Fabric:</strong> Premium performance blend</p>
+                  <p><strong>Care:</strong> Machine wash cold, tumble dry low</p>
+                  <p><strong>Origin:</strong> Designed by BATTI©</p>
                 </CollapsibleContent>
               </Collapsible>
             </div>
@@ -1131,8 +1130,8 @@ const ProductPage = () => {
                 <ChevronDown className={`w-4 h-4 transition-transform ${featuresOpen ? 'rotate-180' : ''}`} />
               </CollapsibleTrigger>
               <CollapsibleContent className="pt-4 space-y-2 text-sm text-muted-foreground">
-                <p><strong>Care:</strong> Hand wash cold, do not bleach, line dry.</p>
-                <p><strong>Origin:</strong> Made in Colombia</p>
+                <p><strong>Care:</strong> Machine wash cold, tumble dry low.</p>
+                <p><strong>Origin:</strong> Designed by BATTI©</p>
               </CollapsibleContent>
             </Collapsible>
 
@@ -1146,7 +1145,7 @@ const ProductPage = () => {
                 <p><strong>Free Shipping:</strong> On all orders over $99</p>
                 <p><strong>Standard Shipping:</strong> 5-7 business days</p>
                 <p><strong>Express Shipping:</strong> 2-3 business days</p>
-                <p className="pt-2"><strong>Returns:</strong> Due to hygiene reasons, this item is non-returnable and non-exchangeable.</p>
+                <p className="pt-2"><strong>Returns:</strong> Items can be returned within 30 days of delivery in original, unused condition with tags attached.</p>
               </CollapsibleContent>
             </Collapsible>
           </div>
@@ -1163,7 +1162,7 @@ const ProductPage = () => {
               <div className="w-10 h-1 bg-red-600 mt-6"></div>
             </div>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-sm">
-              The ones you'll reach for. These soft underwear move with you (and don't dig in) during workouts and hang outs.
+              The pieces you'll reach for every time. Designed to perform, built to last, and made to make you feel unstoppable.
             </p>
           </div>
 
@@ -1192,17 +1191,17 @@ const ProductPage = () => {
 
         {/* Accordion Section */}
         <div className="mt-12 max-w-6xl mx-auto">
-          {/* Designed for Yoga and Casual */}
+          {/* Designed for Performance & Style */}
           <Collapsible open={designedOpen} onOpenChange={setDesignedOpen}>
             <CollapsibleTrigger className="w-full flex items-center justify-between py-5 border-b border-border/30">
               <div className="flex items-center gap-4">
                 <Dumbbell className="w-5 h-5" />
-                <span className="text-base font-medium">Designed for Yoga and Casual</span>
+                <span className="text-base font-medium">Designed for Performance & Style</span>
               </div>
               <Plus className={`w-5 h-5 transition-transform ${designedOpen ? 'rotate-45' : ''}`} />
             </CollapsibleTrigger>
             <CollapsibleContent className="py-4 text-sm text-muted-foreground">
-              Perfect for yoga sessions, casual wear, or everyday activities. The flexible design moves with you for maximum comfort.
+              Crafted for movement and style — whether you're hitting the studio, the court, or the streets. Every piece is engineered for confidence.
             </CollapsibleContent>
           </Collapsible>
 
@@ -1220,17 +1219,17 @@ const ProductPage = () => {
             </CollapsibleContent>
           </Collapsible>
 
-          {/* High Rise, Bikini Fit */}
+          {/* Sculpted Fit, Confident Silhouette */}
           <Collapsible open={fitOpen} onOpenChange={setFitOpen}>
             <CollapsibleTrigger className="w-full flex items-center justify-between py-5 border-b border-border/30">
               <div className="flex items-center gap-4">
                 <SlidersHorizontal className="w-5 h-5" />
-                <span className="text-base font-medium">High Rise, Bikini Fit</span>
+                <span className="text-base font-medium">Sculpted Fit, Confident Silhouette</span>
               </div>
               <Plus className={`w-5 h-5 transition-transform ${fitOpen ? 'rotate-45' : ''}`} />
             </CollapsibleTrigger>
             <CollapsibleContent className="py-4 text-sm text-muted-foreground">
-              High-rise waistband provides extra coverage and support, while the bikini fit offers a flattering silhouette.
+              Designed with precision tailoring that flatters and supports. Every cut is intentional for a silhouette that commands attention.
             </CollapsibleContent>
           </Collapsible>
 
@@ -1244,10 +1243,10 @@ const ProductPage = () => {
               <Plus className={`w-5 h-5 transition-transform ${productFeaturesOpen ? 'rotate-45' : ''}`} />
             </CollapsibleTrigger>
             <CollapsibleContent className="py-4 text-sm text-muted-foreground space-y-2">
-              <p>• DuraFit® technology for firm compression</p>
-              <p>• No leg bands for seamless look</p>
-              <p>• 100% cotton gusset</p>
-              <p>• Invisible under clothes</p>
+              <p>• Premium construction for lasting durability</p>
+              <p>• Seamless design for a clean, polished look</p>
+              <p>• Moisture-wicking technology</p>
+              <p>• Flexible 4-way stretch</p>
             </CollapsibleContent>
           </Collapsible>
 
@@ -1261,10 +1260,9 @@ const ProductPage = () => {
               <Plus className={`w-5 h-5 transition-transform ${materialOpen ? 'rotate-45' : ''}`} />
             </CollapsibleTrigger>
             <CollapsibleContent className="py-4 text-sm text-muted-foreground space-y-2">
-              <p><strong>Fabric:</strong> 59% polyamide, 41% elastane</p>
-              <p><strong>Interior lining:</strong> 57% polyamide, 43% elastane</p>
-              <p><strong>Care:</strong> Hand wash cold, do not bleach, line dry</p>
-              <p><strong>Origin:</strong> Made sustainably in Colombia</p>
+              <p><strong>Fabric:</strong> Premium performance blend</p>
+              <p><strong>Care:</strong> Machine wash cold, tumble dry low</p>
+              <p><strong>Origin:</strong> Designed by BATTI©</p>
             </CollapsibleContent>
           </Collapsible>
         </div>
