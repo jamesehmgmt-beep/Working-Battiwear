@@ -47,6 +47,10 @@ interface ProductData {
           name: string;
           value: string;
         }>;
+        image?: {
+          url: string;
+          altText: string | null;
+        };
       };
     }>;
   };
@@ -517,6 +521,17 @@ const ProductPage = () => {
   const currentPrice = selectedVariant?.price.amount || product?.priceRange.minVariantPrice.amount || "0";
   const originalPrice = (parseFloat(currentPrice) * 1.26).toFixed(2); // Simulated original price for sale
 
+  // Build display images: if the selected variant has an image, replace the first image with it
+  const displayImages = [...images];
+  if (selectedVariant?.image?.url && displayImages.length > 0) {
+    displayImages[0] = {
+      node: {
+        url: selectedVariant.image.url,
+        altText: selectedVariant.image.altText || selectedVariant.title,
+      },
+    };
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background">
@@ -571,12 +586,12 @@ const ProductPage = () => {
           {/* Left - Image Grid (2 per row) */}
           <div className="space-y-1">
             <div className="grid grid-cols-2 gap-1">
-              {images.slice(0, 6).map((img, idx) => (
-                <div key={idx} className="relative aspect-[3/4] bg-[#f5f0eb] overflow-hidden">
+              {displayImages.slice(0, 6).map((img, idx) => (
+                <div key={`${img.node.url}-${idx}`} className="relative aspect-[3/4] bg-[#f5f0eb] overflow-hidden">
                   <img
                     src={img.node.url}
                     alt={img.node.altText || `${product.title} ${idx + 1}`}
-                    className="w-full h-full object-cover"
+                    className={`w-full h-full object-cover transition-opacity duration-300 ${idx === 0 ? 'animate-fade-in' : ''}`}
                   />
                 </div>
               ))}
