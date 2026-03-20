@@ -660,142 +660,36 @@ const ProductPage = () => {
                   </div>
                   <div className="flex flex-wrap gap-3">
                     {option.values.map((value) => {
-                      const colorName = value.toLowerCase();
-                      const colorMap: Record<string, string> = {
-                        // Basic colors
-                        'black': '#000000',
-                        'white': '#FFFFFF',
-                        'red': '#DC2626',
-                        'blue': '#3B82F6',
-                        'green': '#22C55E',
-                        'yellow': '#FBBF24',
-                        'orange': '#F97316',
-                        'purple': '#9333EA',
-                        'pink': '#EC4899',
-                        // Neutrals & skin tones
-                        'nude': '#E8C4A2',
-                        'beige': '#D4B896',
-                        'tan': '#D2B48C',
-                        'cream': '#FFFDD0',
-                        'ivory': '#FFFFF0',
-                        'sand': '#C2B280',
-                        'natural': '#DCD0BA',
-                        'taupe': '#483C32',
-                        'khaki': '#C3B091',
-                        'champagne': '#F7E7CE',
-                        'camel': '#C19A6B',
-                        // Browns
-                        'brown': '#8B4513',
-                        'mocha': '#967969',
-                        'caramel': '#FFD59A',
-                        'chocolate': '#7B3F00',
-                        'coffee': '#6F4E37',
-                        'espresso': '#4A2C2A',
-                        'chestnut': '#954535',
-                        'cinnamon': '#D2691E',
-                        'amber': '#FFBF00',
-                        'copper': '#B87333',
-                        'bronze': '#CD7F32',
-                        'terracotta': '#E2725B',
-                        'rust': '#B7410E',
-                        // Pinks & Reds
-                        'rose': '#F43F5E',
-                        'blush': '#FEC5BB',
-                        'coral': '#FF6B6B',
-                        'salmon': '#FA8072',
-                        'peach': '#FFCBA4',
-                        'burgundy': '#800020',
-                        'wine': '#722F37',
-                        'maroon': '#800000',
-                        'cherry': '#DE3163',
-                        'ruby': '#E0115F',
-                        'crimson': '#DC143C',
-                        'scarlet': '#FF2400',
-                        'raspberry': '#E30B5C',
-                        'magenta': '#FF00FF',
-                        'fuchsia': '#FF00FF',
-                        'mauve': '#E0B0FF',
-                        'lilac': '#C8A2C8',
-                        'lavender': '#E6E6FA',
-                        'plum': '#8E4585',
-                        'orchid': '#DA70D6',
-                        'violet': '#8B00FF',
-                        // Blues
-                        'navy': '#000080',
-                        'cobalt': '#0047AB',
-                        'royal': '#4169E1',
-                        'azure': '#007FFF',
-                        'sky': '#87CEEB',
-                        'teal': '#008080',
-                        'turquoise': '#40E0D0',
-                        'aqua': '#00FFFF',
-                        'cyan': '#00FFFF',
-                        'sapphire': '#0F52BA',
-                        'indigo': '#4B0082',
-                        'midnight': '#191970',
-                        'denim': '#1560BD',
-                        'slate': '#708090',
-                        'steel': '#4682B4',
-                        'periwinkle': '#CCCCFF',
-                        // Greens
-                        'olive': '#808000',
-                        'sage': '#9CAF88',
-                        'mint': '#98FF98',
-                        'emerald': '#50C878',
-                        'jade': '#00A86B',
-                        'forest': '#228B22',
-                        'hunter': '#355E3B',
-                        'lime': '#32CD32',
-                        'moss': '#8A9A5B',
-                        'pistachio': '#93C572',
-                        'seafoam': '#71EEB8',
-                        'kelly': '#4CBB17',
-                        // Grays
-                        'grey': '#6B7280',
-                        'gray': '#6B7280',
-                        'charcoal': '#36454F',
-                        'silver': '#C0C0C0',
-                        'pewter': '#8F9494',
-                        'ash': '#B2BEB5',
-                        'graphite': '#383838',
-                        'smoke': '#738276',
-                        'iron': '#48494B',
-                        'gunmetal': '#2C3539',
-                        'lead': '#212121',
-                        'platinum': '#E5E4E2',
-                        'stone': '#928E85',
-                        // Light/Dark
-                        'light': '#F5F5F5',
-                        'dark': '#1F2937',
-                        // Gold/Metallic
-                        'gold': '#FFD700',
-                        'rose gold': '#B76E79',
-                        'brass': '#B5A642',
-                      };
-                      // Find the best matching color
-                      let bgColor = '#9CA3AF'; // default gray
-                      for (const [key, hex] of Object.entries(colorMap)) {
-                        if (colorName.includes(key)) {
-                          bgColor = hex;
-                          break;
-                        }
-                      }
-                      const isDark = ['black', 'navy', 'dark', 'charcoal', 'burgundy', 'wine', 'maroon', 'chocolate', 'espresso', 'coffee'].some(c => colorName.includes(c));
+                      // Find a variant with this color to get its image
+                      const variantWithImage = product.variants.edges.find(({ node }) =>
+                        node.selectedOptions.some(
+                          (opt) => opt.name.toLowerCase() === 'color' && opt.value === value
+                        ) && node.image?.url
+                      )?.node;
+
+                      const variantImage = variantWithImage?.image;
                       
                       return (
                         <button
                           key={value}
                           onClick={() => setSelectedOptions((prev) => ({ ...prev, [option.name]: value }))}
-                          className={`w-9 h-9 rounded-full border-2 transition-all relative ${
+                          className={`w-12 h-12 rounded-lg border-2 transition-all relative overflow-hidden ${
                             selectedOptions[option.name] === value
-                              ? "border-foreground ring-2 ring-foreground ring-offset-2"
+                              ? "border-foreground ring-2 ring-foreground ring-offset-1"
                               : "border-muted hover:border-foreground"
                           }`}
-                          style={{ backgroundColor: bgColor }}
                           title={value}
                         >
-                          {selectedOptions[option.name] === value && (
-                            <Check className={`w-4 h-4 absolute inset-0 m-auto ${isDark ? 'text-white' : 'text-foreground'}`} />
+                          {variantImage?.url ? (
+                            <img 
+                              src={variantImage.url} 
+                              alt={value} 
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <span className="w-full h-full flex items-center justify-center text-[8px] font-medium text-muted-foreground bg-secondary">
+                              {value.slice(0, 3).toUpperCase()}
+                            </span>
                           )}
                         </button>
                       );
