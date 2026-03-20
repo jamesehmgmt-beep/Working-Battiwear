@@ -11,19 +11,19 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-const shapewearCategories = [
-  { title: "BATTI© Shorts", link: "/category/shorts" },
-  { title: "BATTI© Panties", link: "/category/panties" },
+const activewearCategories = [
+  { title: "BATTI© Unitards", link: "/category/unitards" },
   { title: "BATTI© Jumpsuits", link: "/category/jumpsuits" },
-  { title: "BATTI© Bodysuits", link: "/category/bodysuits" },
-  { title: "BATTI© Romper", link: "/category/romper" },
-  { title: "BATTI© Back Correctors & Bras", link: "/product/batti©-posturefix" },
+  { title: "BATTI© Yoga Sets", link: "/category/yoga-sets" },
+  { title: "BATTI© Shorts", link: "/category/shorts" },
+  { title: "BATTI© Tennis Dresses", link: "/category/tennis-dresses" },
+  { title: "BATTI© Tops & Jackets", link: "/category/tops-jackets" },
 ];
 
 const mainNavItems = [
-  { title: "BEST SELLER", link: "/category/best-seller" },
-  { title: "SHAPEWEAR", link: "/category/shapewear", hasSubmenu: true },
-  { title: "APPAREL", link: "/apparel" },
+  { title: "NEW ARRIVALS", link: "/category/new-arrivals" },
+  { title: "HEELS", link: "/category/heels" },
+  { title: "ACTIVEWEAR", link: "/category/activewear", hasSubmenu: true },
 ];
 
 export const Header = () => {
@@ -32,9 +32,9 @@ export const Header = () => {
   const { user } = useAuth();
   const isHomePage = location.pathname === "/";
   const [isScrolled, setIsScrolled] = useState(!isHomePage);
-  const [isShapewearOpen, setIsShapewearOpen] = useState(false);
+  const [isActivewearOpen, setIsActivewearOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isShapewearMobileOpen, setIsShapewearMobileOpen] = useState(false);
+  const [isActivewearMobileOpen, setIsActivewearMobileOpen] = useState(false);
   const totalItems = useCartStore((state) => state.getTotalItems());
 
   const handleAccountClick = () => {
@@ -84,21 +84,21 @@ export const Header = () => {
                       {item.hasSubmenu ? (
                         <div>
                           <button
-                            onClick={() => setIsShapewearMobileOpen(!isShapewearMobileOpen)}
+                            onClick={() => setIsActivewearMobileOpen(!isActivewearMobileOpen)}
                             className="text-lg font-medium tracking-wider text-foreground hover:opacity-70 transition-opacity w-full text-left"
                           >
                             {item.title}
                           </button>
-                          {isShapewearMobileOpen && (
+                          {isActivewearMobileOpen && (
                             <div className="ml-4 mt-4 flex flex-col gap-3">
                               <Link
                                 to={item.link}
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className="text-base font-medium tracking-wide text-foreground hover:opacity-70 transition-opacity"
                               >
-                                All Shapewear
+                                All Activewear
                               </Link>
-                              {shapewearCategories.map((cat) => (
+                              {activewearCategories.map((cat) => (
                                 <Link
                                   key={cat.link}
                                   to={cat.link}
@@ -130,35 +130,42 @@ export const Header = () => {
           {/* Left Navigation - Desktop Only */}
           <div className="hidden lg:flex items-center gap-8">
             <Link
-              to="/category/best-seller"
+              to="/category/new-arrivals"
               className="text-sm font-medium tracking-wider text-foreground hover:opacity-70 transition-opacity"
             >
-              BEST SELLER
+              NEW ARRIVALS
             </Link>
             
-            {/* Shapewear Dropdown */}
+            <Link
+              to="/category/heels"
+              className="text-sm font-medium tracking-wider text-foreground hover:opacity-70 transition-opacity"
+            >
+              HEELS
+            </Link>
+
+            {/* Activewear Dropdown */}
             <div 
               className="relative"
-              onMouseEnter={() => setIsShapewearOpen(true)}
-              onMouseLeave={() => setIsShapewearOpen(false)}
+              onMouseEnter={() => setIsActivewearOpen(true)}
+              onMouseLeave={() => setIsActivewearOpen(false)}
             >
               <Link
-                to="/category/shapewear"
+                to="/category/activewear"
                 className="text-sm font-medium tracking-wider text-foreground hover:opacity-70 transition-opacity"
               >
-                SHAPEWEAR
+                ACTIVEWEAR
               </Link>
               
               {/* Dropdown Menu */}
               <div 
                 className={`absolute top-full left-0 mt-2 w-56 bg-background border border-border shadow-lg transition-all duration-200 ${
-                  isShapewearOpen 
+                  isActivewearOpen 
                     ? "opacity-100 visible translate-y-0" 
                     : "opacity-0 invisible -translate-y-2"
                 }`}
               >
                 <div className="py-2">
-                  {shapewearCategories.map((cat) => (
+                  {activewearCategories.map((cat) => (
                     <Link
                       key={cat.link}
                       to={cat.link}
@@ -170,18 +177,11 @@ export const Header = () => {
                 </div>
               </div>
             </div>
-
-            <Link
-              to="/apparel"
-              className="text-sm font-medium tracking-wider text-foreground hover:opacity-70 transition-opacity"
-            >
-              APPAREL
-            </Link>
           </div>
 
           {/* Center Logo */}
           <Link to="/" className="absolute left-1/2 -translate-x-1/2">
-            <img src={battiLogo} alt="Batti" className="h-[90px] lg:h-[118px] w-auto mt-2" loading="eager" />
+            <img src={battiLogo} alt="BATTI©" className="h-[90px] lg:h-[118px] w-auto mt-2" loading="eager" />
           </Link>
 
           {/* Right Navigation */}

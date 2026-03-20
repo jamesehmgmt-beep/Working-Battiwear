@@ -16,54 +16,95 @@ import rompersImage from "@/assets/rompers1.png";
 
 // Subcategory circles configuration
 const subcategoryCircles = [
+  { title: "Heels", link: "/category/heels", image: pantiesImage },
+  { title: "Unitards", link: "/category/unitards", image: jumpsuitsImage },
+  { title: "Jumpsuits", link: "/category/jumpsuits", image: bodysuitImage },
+  { title: "Yoga Sets", link: "/category/yoga-sets", image: rompersImage },
   { title: "Shorts", link: "/category/shorts", image: shortsImage },
-  { title: "Panties", link: "/category/panties", image: pantiesImage },
-  { title: "Jumpsuits", link: "/category/jumpsuits", image: jumpsuitsImage },
-  { title: "Bodysuits", link: "/category/bodysuits", image: bodysuitImage },
-  { title: "Rompers", link: "/category/romper", image: rompersImage },
 ];
 
 // Category configuration
 const categoryConfig: Record<string, { title: string; description: string; query?: string }> = {
-  "best-seller": {
-    title: "Best Sellers",
-    description: "Our most loved shapewear pieces, trusted by thousands.",
+  "new-arrivals": {
+    title: "New Arrivals",
+    description: "The latest drops — from statement heels to performance activewear.",
     query: undefined,
   },
-  "shapewear": {
-    title: "All Shapewear",
-    description: "Discover our complete collection of sculpting essentials.",
+  "heels": {
+    title: "BATTI© Heels",
+    description: "Luxury heels crafted for confidence and style.",
+    query: "Heels",
+  },
+  "activewear": {
+    title: "All Activewear",
+    description: "Performance-ready pieces designed to move with you.",
     query: undefined,
   },
-  "shorts": {
-    title: "BATTI© Shorts",
-    description: "Sculpting shorts for a seamless silhouette.",
-    query: "Shorts",
-  },
-  "panties": {
-    title: "BATTI© Panties",
-    description: "Shaping panties for everyday comfort.",
-    query: "Panty",
+  "unitards": {
+    title: "BATTI© Unitards",
+    description: "Sculpting unitards for seamless performance.",
+    query: "Unitard",
   },
   "jumpsuits": {
     title: "BATTI© Jumpsuits",
-    description: "Full-body sculpting jumpsuits.",
+    description: "Active jumpsuits for studio to street.",
     query: "Jumpsuit",
   },
+  "yoga-sets": {
+    title: "BATTI© Yoga Sets",
+    description: "Coordinated sets for flow and performance.",
+    query: "Yoga",
+  },
+  "shorts": {
+    title: "BATTI© Shorts",
+    description: "High-waist performance shorts for every workout.",
+    query: "Shorts",
+  },
+  "tennis-dresses": {
+    title: "BATTI© Tennis Dresses",
+    description: "Performance tennis dresses with built-in support.",
+    query: "Tennis",
+  },
+  "tops-jackets": {
+    title: "BATTI© Tops & Jackets",
+    description: "Layer up with premium performance tops and jackets.",
+    query: "Top",
+  },
+  "all": {
+    title: "Shop All",
+    description: "Explore the full BATTI© collection.",
+    query: undefined,
+  },
+  "collections": {
+    title: "Collections",
+    description: "Curated collections for every occasion.",
+    query: undefined,
+  },
+  // Legacy routes for backwards compatibility
+  "best-seller": {
+    title: "Best Sellers",
+    description: "Our most loved pieces, trusted by thousands.",
+    query: undefined,
+  },
+  "shapewear": {
+    title: "All Products",
+    description: "Discover our complete collection.",
+    query: undefined,
+  },
   "bodysuits": {
-    title: "BATTI© Bodysuits",
-    description: "Seamless bodysuits for complete control.",
-    query: "Bodysuit",
+    title: "BATTI© Unitards",
+    description: "Sculpting unitards for seamless performance.",
+    query: "Unitard",
+  },
+  "panties": {
+    title: "BATTI© Shorts",
+    description: "High-waist performance shorts.",
+    query: "Shorts",
   },
   "romper": {
-    title: "BATTI© Rompers",
-    description: "Stylish rompers with built-in shaping.",
-    query: "Romper",
-  },
-  "why-us": {
-    title: "Why Choose BATTI©?",
-    description: "Quality, comfort, and confidence in every piece.",
-    query: undefined,
+    title: "BATTI© Jumpsuits",
+    description: "Active jumpsuits for studio to street.",
+    query: "Jumpsuit",
   },
 };
 
@@ -73,7 +114,7 @@ const CategoryPage = () => {
   const [loading, setLoading] = useState(true);
   const addItem = useCartStore((state) => state.addItem);
 
-  const config = category ? categoryConfig[category] || { title: category.replace(/-/g, " ").toUpperCase(), description: "" } : categoryConfig["shapewear"];
+  const config = category ? categoryConfig[category] || { title: category.replace(/-/g, " ").toUpperCase(), description: "" } : categoryConfig["new-arrivals"];
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -141,7 +182,7 @@ const CategoryPage = () => {
               className="flex flex-col items-center gap-2 group flex-shrink-0"
             >
               <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-secondary/50 border border-border flex items-center justify-center overflow-hidden group-hover:border-foreground transition-colors">
-                <img src={sub.image} alt={sub.title} className="w-full h-full object-cover" />
+                <img src={sub.image} alt={sub.title} className="w-full h-full object-cover" loading="lazy" />
               </div>
               <span className="text-sm font-medium text-center">{sub.title}</span>
             </Link>
@@ -194,6 +235,7 @@ const CategoryPage = () => {
                           src={firstImage.url}
                           alt={firstImage.altText || product.node.title}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          loading="lazy"
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">

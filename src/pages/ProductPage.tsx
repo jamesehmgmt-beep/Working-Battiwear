@@ -199,8 +199,8 @@ const mockReviews = [
   {
     id: 1,
     rating: 5,
-    title: "Underwear",
-    content: "Excellent for working out very comfortable",
+    title: "Amazing quality",
+    content: "Excellent quality and very comfortable. Love the design!",
     fits: "True to size",
     sizePurchased: "Large",
     daysAgo: 11,
@@ -209,8 +209,8 @@ const mockReviews = [
   {
     id: 2,
     rating: 5,
-    title: "5 stars to Batti panties!",
-    content: "Great fit, a tad expensive but they don't wear out!!",
+    title: "5 stars to Batti!",
+    content: "Great fit, premium quality. Worth every penny!",
     fits: "True to size",
     sizePurchased: null,
     daysAgo: 21,
@@ -219,15 +219,15 @@ const mockReviews = [
   {
     id: 3,
     rating: 5,
-    title: "Under Ease High Rise Bikini",
-    content: "These are amazing, comfortable and don't ride up. Nothing else on the market compares.",
+    title: "Absolutely love it",
+    content: "These are amazing. The quality is outstanding and nothing else on the market compares.",
     fits: null,
     sizePurchased: null,
     daysAgo: 24,
     hasResponse: true,
     response: {
       author: "Batti Customer Care",
-      content: "The underwear that truly sets the bar.",
+      content: "Thank you! We're glad you love it.",
       daysAgo: 24,
     },
   },
@@ -558,7 +558,7 @@ const ProductPage = () => {
         <nav className="text-xs text-muted-foreground">
           <Link to="/" className="hover:text-foreground">Home</Link>
           <span className="mx-2">/</span>
-          <Link to="/category/shapewear" className="hover:text-foreground">Womens Panties</Link>
+          <Link to="/category/new-arrivals" className="hover:text-foreground">Shop All</Link>
           <span className="mx-2">/</span>
           <span className="text-foreground">{product.title}</span>
         </nav>
@@ -597,14 +597,14 @@ const ProductPage = () => {
               <p className="text-base text-muted-foreground">{product.title}</p>
             </div>
 
-            {/* Compression Level */}
+            {/* Quality Level */}
             <div className="flex items-center gap-2">
               <div className="flex gap-0.5">
                 <div className="w-6 h-1 bg-foreground"></div>
                 <div className="w-6 h-1 bg-foreground"></div>
-                <div className="w-6 h-1 bg-muted"></div>
+                <div className="w-6 h-1 bg-foreground"></div>
               </div>
-              <span className="text-xs uppercase tracking-wide text-muted-foreground">Firm Compression</span>
+              <span className="text-xs uppercase tracking-wide text-muted-foreground">Premium Quality</span>
             </div>
 
             {/* Rating & SKU */}
