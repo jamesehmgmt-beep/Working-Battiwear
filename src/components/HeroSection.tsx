@@ -1,37 +1,23 @@
 import { Link } from "react-router-dom";
-import heroVideo from "@/assets/1226.mp4";
-import heroVideoMobile from "@/assets/1226_mobile.mp4";
+import heroImage from "@/assets/herobatti.webp";
 
 interface HeroSectionProps {
   ctaLink?: string;
 }
 
 export const HeroSection = ({ 
-  ctaLink = "/category/shapewear"
+  ctaLink = "/category/new-arrivals"
 }: HeroSectionProps) => {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-secondary">
-      {/* Video background - Desktop */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover hidden md:block"
-      >
-        <source src={heroVideo} type="video/mp4" />
-      </video>
-      
-      {/* Video background - Mobile */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover md:hidden"
-      >
-        <source src={heroVideoMobile} type="video/mp4" />
-      </video>
+      {/* Hero Image */}
+      <img
+        src={heroImage}
+        alt="BATTI© - Luxury Fashion & Footwear"
+        className="absolute inset-0 w-full h-full object-cover"
+        fetchPriority="high"
+        decoding="sync"
+      />
       
       {/* Overlay */}
       <div className="absolute inset-0 hero-overlay" />
@@ -39,6 +25,12 @@ export const HeroSection = ({
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-end pb-24 section-padding">
         <div className="text-center animate-slide-up">
+          <h1 className="text-4xl md:text-6xl font-serif text-background mb-4 drop-shadow-lg tracking-wider">
+            BATTI©
+          </h1>
+          <p className="text-sm md:text-base text-background/90 tracking-[0.3em] uppercase mb-8 drop-shadow-md">
+            Luxury Fashion & Footwear
+          </p>
           {/* Shop Now Button */}
           <Link
             to={ctaLink}
