@@ -6,7 +6,7 @@ interface HeroSectionProps {
 }
 
 export const HeroSection = ({ 
-  ctaLink = "/category/new-arrivals"
+  ctaLink = "/category/shapewear"
 }: HeroSectionProps) => {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-secondary">
@@ -25,12 +25,6 @@ export const HeroSection = ({
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-end pb-24 section-padding">
         <div className="text-center animate-slide-up">
-          <h1 className="text-4xl md:text-6xl font-serif text-background mb-4 drop-shadow-lg tracking-wider">
-            BATTI©
-          </h1>
-          <p className="text-sm md:text-base text-background/90 tracking-[0.3em] uppercase mb-8 drop-shadow-md">
-            Luxury Fashion & Footwear
-          </p>
           {/* Shop Now Button */}
           <Link
             to={ctaLink}
