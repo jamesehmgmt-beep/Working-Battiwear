@@ -344,10 +344,10 @@ export async function createStorefrontCheckout(
   }
 }
 
-// Format price
-export function formatPrice(amount: string, currencyCode: string): string {
+// Format price — always display in USD
+export function formatPrice(amount: string, _currencyCode?: string): string {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: currencyCode,
+    currency: 'USD',
   }).format(parseFloat(amount));
 }
