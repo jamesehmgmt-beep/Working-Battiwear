@@ -36,8 +36,7 @@ export const CartDrawer = ({ children }: CartDrawerProps) => {
   const handleCheckout = async () => {
     const checkoutUrl = await createCheckout();
     if (checkoutUrl) {
-      window.open(checkoutUrl, '_blank');
-      setOpen(false);
+      window.location.href = checkoutUrl;
     }
   };
 
