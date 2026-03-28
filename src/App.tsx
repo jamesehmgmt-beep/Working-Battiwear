@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import Index from "./pages/Index";
@@ -33,6 +33,12 @@ import SettingsPage from "./pages/SettingsPage";
 
 const queryClient = new QueryClient();
 
+// Redirect /products/:handle (Shopify format) to /product/:handle (our format)
+const ProductRedirect = () => {
+  const { handle } = useParams();
+  return <Navigate to={`/product/${handle}`} replace />;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
@@ -44,6 +50,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/product/:handle" element={<ProductPage />} />
+            <Route path="/products/:handle" element={<ProductRedirect />} />
             <Route path="/category/:category" element={<CategoryPage />} />
             <Route path="/apparel" element={<ApparelPage />} />
             <Route path="/track-order" element={<TrackOrderPage />} />
